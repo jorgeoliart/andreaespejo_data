@@ -11,3 +11,9 @@ muestra_n250 <- dplyr::slice_sample( #generar muestra de 250 filas
   replace = TRUE #definir que sea posible repetir una misma observación en el muestreo
 )
 
+muestra_stats <- muestra_n250 %>% #obtener estadísticos de tendencia central y dispersión de salarios por género
+  group_by(male) %>%
+  summarise(promedio = mean(salary),
+            mediana = median(salary),
+            desvest = sd(salary),
+            rango =  max(salary) - min(salary))
