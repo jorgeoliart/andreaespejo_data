@@ -22,4 +22,5 @@ muestra_stats <- muestra_n250 %>% #obtener estadísticos de tendencia central y 
 hombres <- muestra_n250[muestra_n250$male == 1, "salary"]
 mujeres <- muestra_n250[muestra_n250$male == 0, "salary"]
 
+t_result <- t.test (hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
 
