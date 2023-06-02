@@ -17,3 +17,9 @@ muestra_stats <- muestra_n250 %>% #obtener estadísticos de tendencia central y 
             mediana = median(salary),
             desvest = sd(salary),
             rango =  max(salary) - min(salary))
+
+#generar submuestras de hombres y mujeres, previo al test t
+hombres <- muestra_n250[muestra_n250$male == 1, "salary"]
+mujeres <- muestra_n250[muestra_n250$male == 0, "salary"]
+
+
