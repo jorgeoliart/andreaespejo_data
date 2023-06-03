@@ -24,3 +24,5 @@ mujeres <- muestra_n250[muestra_n250$male == 0, "salary"]
 
 t_result <- t.test (hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
 
+difsalariopromedio <- t_result$estimate[1] - t_result$estimate[2] #calcular la diferencia promedio en salario
+
