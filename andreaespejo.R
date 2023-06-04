@@ -1,10 +1,15 @@
-#cargar las librería a ser usadas
-library(dplyr) #cargar librería que permite agrupar data y resumir estadísticos
-library(car) #cargar librería que permite el test de Levene
+set.seed(280851373) #fijar set.seed para fijar la aleatorización de la muestra
+
+#asegurarse de usar las versiones de R y de las librerías instaladas para poder reproducir el muestreo
+#versión de R: 4.3.0
+
+#cargar las librerías a ser usadas
+#librería: dplyr, Versión: 1.1.2, permite agrupar y resumir estadísticos
+library(dplyr) 
+#librería: car, Versión: 3.1.2, permite el test de Levene
+library(car) 
 
 faculty <- read.csv("faculty.csv") #importar base de datos
-
-set.seed(280851373) #fijar set.seed para fijar la aleatorización de la muestra
 
 muestra_n250 <- dplyr::slice_sample( #generar muestra de 250 filas
   faculty,
