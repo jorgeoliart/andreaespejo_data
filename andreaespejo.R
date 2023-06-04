@@ -28,6 +28,10 @@ mujeres <- muestra_n250[muestra_n250$male == 0, "salary"]
 shapiro.test(hombres)
 shapiro.test(mujeres)
 
+#chequear el supuesto de igualdad de varianzas de la distribución de salarios
+muestra_n250$male <- as.factor(muestra_n250$male) #transformar la variable de género a categórica
+levene <- leveneTest(muestra_n250$salary ~ muestra_n250$male) #correr el test de Levene
+
 t_result <- t.test (hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
 
 difsalariopromedio <- t_result$estimate[1] - t_result$estimate[2] #calcular la diferencia promedio en salario
