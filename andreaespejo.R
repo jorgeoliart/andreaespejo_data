@@ -1,5 +1,6 @@
 #cargar las librería a ser usadas
 library(dplyr) #cargar librería que permite agrupar data y resumir estadísticos
+library(car) #cargar librería que permite el test de Levene
 
 faculty <- read.csv("faculty.csv") #importar base de datos
 
