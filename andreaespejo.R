@@ -1,6 +1,6 @@
 set.seed(280851373) #fijar set.seed para fijar la aleatorización de la muestra
 
-#asegurarse de usar las versiones de R y de las librerías instaladas para poder reproducir el muestreo
+#asegurarse de usar las versiones de R y de las librerías instaladas para poder reproducir el
 #versión de R: 4.3.0
 
 #cargar las librerías a ser usadas
@@ -29,6 +29,10 @@ muestra_stats <- muestra_n250 %>% #obtener estadísticos de tendencia central y 
 hombres <- muestra_n250[muestra_n250$male == 1, "salary"]
 mujeres <- muestra_n250[muestra_n250$male == 0, "salary"]
 
+#transformar vectores de salarios de h y m a números
+hombres <- as.numeric(hombres)
+mujeres <- as.numeric(mujeres)
+
 #chequear el supuesto de normalidad de la distribución de salarios
 shapiro.test(hombres)
 shapiro.test(mujeres)
@@ -37,7 +41,7 @@ shapiro.test(mujeres)
 muestra_n250$male <- as.factor(muestra_n250$male) #transformar la variable de género a categórica
 levene <- leveneTest(muestra_n250$salary ~ muestra_n250$male) #correr el test de Levene
 
-t_result <- t.test (hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
+t_result <- t.test(hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
 
 difsalariopromedio <- t_result$estimate[1] - t_result$estimate[2] #calcular la diferencia promedio en salario
 
