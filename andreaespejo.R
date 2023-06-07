@@ -41,7 +41,9 @@ shapiro.test(mujeres)
 muestra_n250$male <- as.factor(muestra_n250$male) #transformar la variable de género a categórica
 levene <- leveneTest(muestra_n250$salary ~ muestra_n250$male) #correr el test de Levene
 
-t_result <- t.test(hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
+boxplot_distribucion <- boxplot(salary ~ male, data = muestra_n250) #correr un box plot para chequear las varianzas gráficamente
 
-difsalariopromedio <- t_result$estimate[1] - t_result$estimate[2] #calcular la diferencia promedio en salario
+t_resultado <- t.test(hombres, mujeres, var.equal = FALSE) #Calcular t de welch para salarios entre hombres y mujeres
+
+difsalariopromedio <- t_resultado$estimate[1] - t_resultado$estimate[2] #calcular la diferencia promedio en salario
 
